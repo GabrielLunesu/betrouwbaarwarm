@@ -1,23 +1,27 @@
 'use client';
 
-import Header from '@/components/header';
-import Hero from '@/components/hero';
-import Services from '@/components/services';
-import Testimonials from '@/components/testimonials';
-import Team from '@/components/team';
-import CTA from '@/components/cta';
-import Footer from '@/components/footer';
+import { Hero } from '@/components/hero';
+import { Services } from '@/components/services';
+import { Testimonials } from '@/components/testimonials';
+import { CTA } from '@/components/cta';
+import { AboutPreview } from '@/components/about-preview';
+import { USPs } from '@/components/usps';
+import { Emergency } from '@/components/emergency';
+import { Coverage } from '@/components/coverage';
+import { FeaturedProjects } from '@/components/featured-projects';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Header />
+    <>
       <Hero />
+      <USPs />
       <Services />
+      <AboutPreview />
+      {/* <FeaturedProjects /> */}
       <Testimonials />
-      <Team />
+      <Emergency />
+      <Coverage />
       <CTA />
-      <Footer />
-    </main>
+    </>
   );
 }

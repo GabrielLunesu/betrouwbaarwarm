@@ -1,98 +1,121 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Thermometer, Wind, Flame } from 'lucide-react';
+import { useLanguage, translations } from '@/lib/language-context';
 
-const services = [
-  {
-    id: 'warmtepompen',
-    title: 'Warmtepompen',
-    description: 'Duurzame en energiezuinige verwarming voor uw woning of bedrijf. Onze warmtepompen zorgen voor een comfortabel binnenklimaat met lage energiekosten.',
-    image: '/warmtepomp.png',
-    link: '/warmtepompen',
-    icon: Thermometer,
-    color: 'bg-primary-100 text-primary-600'
-  },
-  {
-    id: 'airconditioning',
-    title: 'Airconditioning',
-    description: 'Optimaal comfort tijdens warme dagen. Onze airconditioningsystemen zorgen voor een aangename temperatuur en luchtkwaliteit in elke ruimte.',
-    image: '/airco.png',
-    link: '/airconditioning',
-    icon: Wind,
-    color: 'bg-blue-100 text-blue-600'
-  },
-  {
-    id: 'cv-ketels',
-    title: 'CV-ketels',
-    description: 'Betrouwbare verwarmingssystemen voor uw woning. Wij installeren en onderhouden hoogwaardige CV-ketels voor optimale prestaties en levensduur.',
-    image: '/cvketel.png',
-    link: '/cv-ketels',
-    icon: Flame,
-    color: 'bg-orange-100 text-orange-600'
-  },
-];
+export function Services() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const { language } = useLanguage();
+  const t = translations[language];
 
-export default function Services() {
+  // For a production site, these service titles and descriptions should be added to the translations dictionary
+  // to fully support multilingual content. For now, they remain in Dutch only.
+  const services = [
+    {
+      title: 'Bitumen dak',
+      description: 'Duurzame oplossingen voor platte daken met bitumen dakbedekking.',
+      link: '/diensten/bitumen-dak'
+    },
+    {
+      title: 'PVC dak',
+      description: 'Moderne PVC dakbedekking met uitstekende waterdichtheid en levensduur.',
+      link: '/diensten/pvc-dak'
+    },
+    {
+      title: 'Pannendak',
+      description: 'Renovatie en onderhoud van traditionele en moderne pannendaken.',
+      link: '/diensten/pannendak'
+    },
+    {
+      title: 'Zink- en loodwerk',
+      description: 'Specialistisch zink- en loodwerk voor dakgoten en schoorstenen.',
+      link: '/diensten/zink-loodwerk'
+    }
+  ];
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
   return (
-    <section className="py-24 bg-white">
-      <div className="container-center">
+    <section className="py-20">
+      <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Onze Specialiteiten</h2>
-          <p className="text-lg text-foreground max-w-2xl mx-auto">
-            BetrouwbaarWarm is uw specialist in Parkstad voor alle oplossingen op het gebied van verwarming en koeling.
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">{t.servicesTitle}</h2>
+          <p className="text-gray-600 text-lg">
+            {t.servicesSubtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            
-            return (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gradient-glass backdrop-blur-sm rounded-2xl shadow-glass border border-white/20 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full"
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              variants={item}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="group relative bg-primary text-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 p-6"
+            >
+              <h3 className="text-xl text-white font-bold mb-3">{service.title}</h3>
+              <p className="text-white/80 mb-4">{service.description}</p>
+              <Link 
+                href="/diensten"
+                className="inline-flex items-center text-white font-medium group-hover:underline transition-colors"
               >
-                <div className="relative h-48 w-full overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`p-2 rounded-full ${service.color}`}>
-                      <Icon size={20} />
-                    </div>
-                    <h3 className="text-xl font-bold">{service.title}</h3>
-                  </div>
-                  <p className="text-foreground mb-6 flex-grow">{service.description}</p>
-                  <Button asChild variant="outline" className="w-full justify-between group btn-hover">
-                    <Link href={service.link}>
-                      <span>Meer informatie</span>
-                      <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+                {t.readMore}
+                <ChevronRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <div 
+                className={`absolute bottom-0 left-0 h-1 bg-white transition-all duration-300 ${
+                  hoveredIndex === index ? 'w-full' : 'w-0'
+                }`} 
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-12 text-center"
+        >
+          <Link 
+            href="/diensten"
+            className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-md hover:bg-primary-hover transition-colors"
+          >
+            {t.viewAllServices}
+            <ChevronRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

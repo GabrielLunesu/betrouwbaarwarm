@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#0071e3', // Apple blue
+          DEFAULT: "#0e2c4b", // Dark blue from the logo
+          hover: "#1a3e61",
           foreground: '#ffffff',
           50: '#e6f2ff',
           100: '#cce5ff',
@@ -23,8 +24,12 @@ module.exports = {
           900: '#00172f',
         },
         secondary: {
-          DEFAULT: '#f5f5f7', // Apple light gray
+          DEFAULT: "#000000", // Black from the logo
+          hover: "#333333",
           foreground: '#1d1d1f', // Apple dark text
+        },
+        accent: {
+          DEFAULT: "#ffffff", // White elements
         },
         background: '#ffffff',
         foreground: '#1d1d1f',
