@@ -70,12 +70,12 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-gray-900">Telefoon</h3>
-                      <p className="text-gray-600 mb-1">Bereikbaar op werkdagen van 08:00 tot 18:00</p>
+                      <p className="text-gray-600 mb-1">Bereikbaar op werkdagen van 07:00 tot 20:00</p>
                       <a 
-                        href="tel:+31612345678" 
+                        href="tel:+31657824194" 
                         className="text-primary font-medium hover:underline"
                       >
-                        +31 6 12345678
+                        +31 6 57824194
                       </a>
                     </div>
                   </div>
@@ -88,11 +88,11 @@ export default function ContactPage() {
                       <h3 className="font-bold text-gray-900">WhatsApp</h3>
                       <p className="text-gray-600 mb-1">Snelle reactie via chat</p>
                       <a 
-                        href="https://wa.me/31612345678" 
+                        href="https://wa.me/31657824194" 
                         target="_blank"
                         className="text-primary font-medium hover:underline"
                       >
-                        +31 6 12345678
+                        +31 6 57824194
                       </a>
                     </div>
                   </div>
@@ -120,7 +120,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-bold text-gray-900">Werkgebied</h3>
                       <p className="text-gray-600 mb-1">Wij komen in heel Nederland</p>
-                      <p className="text-primary font-medium">KvK: 12345678</p>
+                      <p className="text-primary font-medium">KvK: 96760923</p>
                     </div>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ export default function ContactPage() {
                     Heeft u een daklekkage of stormschade? Bel ons direct voor snelle hulp.
                   </p>
                   <Link 
-                    href="tel:+31612345678"
+                    href="tel:+31657824194"
                     className="inline-flex items-center justify-center w-full bg-red-600 text-white py-3 px-4 rounded-md font-medium hover:bg-red-700 transition-colors"
                   >
                     <Phone size={18} className="mr-2" />
@@ -215,7 +215,7 @@ export default function ContactPage() {
                             value={formState.phone}
                             onChange={handleChange}
                             className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                            placeholder="06 12345678"
+                            placeholder="+31 6 57824194"
                           />
                         </div>
                       </div>

@@ -32,7 +32,7 @@ export function Emergency() {
                   <span className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                     <Clock className="h-3.5 w-3.5 text-primary" />
                   </span>
-                  <span className="text-gray-600">24/7 bereikbaar voor noodgevallen</span>
+                  <span className="text-gray-600">24/6 bereikbaar voor noodgevallen</span>
                 </li>
                 <li className="flex items-start">
                   <span className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center mr-3">
@@ -49,7 +49,7 @@ export function Emergency() {
               </ul>
               
               <Link
-                href="tel:+31612345678"
+                href="tel:+31657824194"
                 className="flex items-center justify-center gap-2 w-full bg-red-600 text-white py-3 px-4 rounded-md hover:bg-red-700 transition-colors"
               >
                 <Phone size={18} />

@@ -94,8 +94,8 @@ export function Footer() {
                   <Phone size={20} className="text-primary mr-3 flex-shrink-0 mt-1" />
                   <div>
                     <p className="text-white font-medium">Telefoon</p>
-                    <a href="tel:+31612345678" className="text-gray-400 hover:text-white transition-colors">
-                      +31 6 12345678
+                    <a href="tel:+31657824194" className="text-gray-400 hover:text-white transition-colors">
+                      +31 6 57824194
                     </a>
                   </div>
                 </li>
@@ -104,11 +104,11 @@ export function Footer() {
                   <div>
                     <p className="text-white font-medium">WhatsApp</p>
                     <a 
-                      href="https://wa.me/31612345678" 
+                      href="https://wa.me/31657824194" 
                       target="_blank" 
                       className="text-gray-400 hover:text-white transition-colors"
                     >
-                      +31 6 12345678
+                      +31 6 57824194
                     </a>
                   </div>
                 </li>

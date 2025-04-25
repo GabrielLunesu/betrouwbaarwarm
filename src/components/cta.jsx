@@ -46,10 +46,10 @@ export function CTA() {
               <h3 className="text-xl text-white font-bold mb-2">Bel ons</h3>
               <p className="text-white/70 mb-4">Direct persoonlijk contact</p>
               <Link 
-                href="tel:+31612345678" 
+                href="tel:+31657824194" 
                 className="inline-block py-2 px-4 bg-white/20 hover:bg-white/30 rounded-md transition-colors text-white font-medium"
               >
-                +31 6 12345678
+                +31 6 57824194
               </Link>
             </motion.div>
             
@@ -66,7 +66,7 @@ export function CTA() {
               <h3 className="text-xl text-white font-bold mb-2">WhatsApp</h3>
               <p className="text-white/70 mb-4">Snelle reactie via chat</p>
               <Link 
-                href="https://wa.me/31612345678" 
+                href="https://wa.me/31657824194" 
                 target="_blank"
                 className="inline-block py-2 px-4 bg-white/20 hover:bg-white/30 rounded-md transition-colors text-white font-medium"
               >

@@ -15,7 +15,7 @@ const teamMembers = [
     social: {
       linkedin: '#',
       email: 'donato@betrouwbaarwarm.nl',
-      phone: '+31 6 12345678',
+      phone: '+31 6 57824194',
     }
   },
   {
@@ -27,7 +27,7 @@ const teamMembers = [
     social: {
       linkedin: '#',
       email: 'yvo@betrouwbaarwarm.nl',
-      phone: '+31 6 23456789',
+      phone: '+31 6 57824194',
     }
   },
   {
@@ -39,7 +39,7 @@ const teamMembers = [
     social: {
       linkedin: '#',
       email: 'hans@betrouwbaarwarm.nl',
-      phone: '+31 6 34567890',
+      phone: '+31 6 57824194',
     }
   },
 ];
@@ -86,7 +86,7 @@ export default function Team() {
                     <Link href={`mailto:${member.social.email}`} className="bg-white/90 p-2 rounded-full hover:bg-primary hover:text-white transition-colors">
                       <Mail size={20} />
                     </Link>
-                    <Link href={`tel:${member.social.phone}`} className="bg-white/90 p-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+                    <Link href={`tel:${member.social.phone.replace(/ /g, '')}`} className="bg-white/90 p-2 rounded-full hover:bg-primary hover:text-white transition-colors">
                       <Phone size={20} />
                     </Link>
                   </div>

@@ -205,10 +205,10 @@ export default function ServicesPage() {
                   Neem contact op
                 </Link>
                 <Link 
-                  href="tel:+31612345678"
+                  href="tel:+31657824194"
                   className="inline-flex items-center justify-center px-6 py-3 bg-white/10 text-white border border-white/30 rounded-md hover:bg-white/20 transition-colors font-medium"
                 >
-                  Bel direct: +31 6 12345678
+                  Bel direct: +31 6 57824194
                 </Link>
               </div>
             </motion.div>

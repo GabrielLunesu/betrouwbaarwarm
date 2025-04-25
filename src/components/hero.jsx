@@ -67,7 +67,7 @@ export function Hero() {
               </Link>
               
               <Link
-                href="https://wa.me/31612345678"
+                href="https://wa.me/31657824194"
                 target="_blank"
                 className="bg-green-600 text-white px-6 py-3 rounded-md font-medium flex items-center justify-center gap-2 hover:bg-green-700 transition-colors"
               >

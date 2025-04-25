@@ -84,14 +84,14 @@ export function Header() {
           {/* Contact buttons */}
           <div className="hidden md:flex items-center space-x-3">
             <Link 
-              href="tel:+31612345678" 
+              href="tel:+31657824194" 
               className="flex items-center gap-1.5 bg-primary text-white px-5 py-2.5 rounded-md hover:bg-primary-hover transition-all duration-300 hover:shadow-md"
             >
               <Phone size={17} />
               <span className="font-medium">{t.call}</span>
             </Link>
             <Link 
-              href="https://wa.me/31612345678" 
+              href="https://wa.me/31657824194" 
               target="_blank"
               className="flex items-center gap-1.5 bg-green-600 text-white px-5 py-2.5 rounded-md hover:bg-green-700 transition-all duration-300 hover:shadow-md"
             >
@@ -144,14 +144,14 @@ export function Header() {
 
               <div className="mt-auto flex flex-col space-y-4 pt-8">
                 <Link 
-                  href="tel:+31612345678" 
+                  href="tel:+31657824194" 
                   className="flex items-center justify-center gap-2 bg-primary text-white py-3.5 px-4 rounded-md hover:bg-primary-hover transition-colors"
                 >
                   <Phone size={18} />
                   <span className="font-medium">{t.call}</span>
                 </Link>
                 <Link 
-                  href="https://wa.me/31612345678" 
+                  href="https://wa.me/31657824194" 
                   target="_blank"
                   className="flex items-center justify-center gap-2 bg-green-600 text-white py-3.5 px-4 rounded-md hover:bg-green-700 transition-colors"
                 >
