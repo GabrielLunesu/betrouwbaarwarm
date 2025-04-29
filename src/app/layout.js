@@ -2,6 +2,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { LanguageProvider } from "@/lib/language-context";
+import { RootLayoutContent } from "@/components/root-layout-content";
 
 export const metadata = {
   title: "Daniel Gábor Dakrenovatie",
@@ -10,18 +11,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="nl" suppressHydrationWarning>
-      <body className="antialiased min-h-screen">
-        <LanguageProvider>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow">
-              {children}
-            </main>
-            <Footer />
-          </div>
-        </LanguageProvider>
-      </body>
-    </html>
+    <LanguageProvider>
+      <RootLayoutContent>{children}</RootLayoutContent>
+    </LanguageProvider>
   );
 }

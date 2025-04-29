@@ -3,8 +3,12 @@
 import { motion } from 'framer-motion';
 import { Phone, AlertTriangle, Clock } from 'lucide-react';
 import Link from 'next/link';
+import { useLanguage, translations } from '@/lib/language-context';
 
 export function Emergency() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section className="py-20 bg-primary/10">
       <div className="container mx-auto px-4">
@@ -21,10 +25,10 @@ export function Emergency() {
                 <AlertTriangle className="w-6 h-6 text-red-600" />
               </div>
 
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Spoedservice voor daklekkage</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">{t.emergencyService}</h2>
               
               <p className="text-gray-600 mb-6">
-                Heeft u een daklekkage of stormschade? Wij zijn beschikbaar voor spoedgevallen en helpen u direct uit de nood.
+                {t.emergencyDescription}
               </p>
               
               <ul className="space-y-4 mb-6">
@@ -32,19 +36,19 @@ export function Emergency() {
                   <span className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                     <Clock className="h-3.5 w-3.5 text-primary" />
                   </span>
-                  <span className="text-gray-600">24/6 bereikbaar voor noodgevallen</span>
+                  <span className="text-gray-600">{t.available24_6}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                     <Clock className="h-3.5 w-3.5 text-primary" />
                   </span>
-                  <span className="text-gray-600">Snelle responstijd in heel Nederland</span>
+                  <span className="text-gray-600">{t.fastResponse}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                     <Clock className="h-3.5 w-3.5 text-primary" />
                   </span>
-                  <span className="text-gray-600">Professionele aanpak zonder meerkosten</span>
+                  <span className="text-gray-600">{t.professionalApproach}</span>
                 </li>
               </ul>
               
@@ -53,7 +57,7 @@ export function Emergency() {
                 className="flex items-center justify-center gap-2 w-full bg-red-600 text-white py-3 px-4 rounded-md hover:bg-red-700 transition-colors"
               >
                 <Phone size={18} />
-                <span className="font-medium">Bel direct voor noodhulp</span>
+                <span className="font-medium">{t.callForHelp}</span>
               </Link>
             </div>
             
@@ -62,13 +66,13 @@ export function Emergency() {
                 <Clock className="w-6 h-6 text-white" />
               </div>
               
-              <h3 className="text-2xl text-white font-bold mb-6">Gegarandeerde responstijd</h3>
+              <h3 className="text-2xl text-white font-bold mb-6">{t.guaranteedResponse}</h3>
               
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-3 border-b border-white/20">
                   <div>
-                    <span className="block text-white/90 text-sm mb-1">Spoedsituaties</span>
-                    <span className="font-medium">Binnen 2-4 uur</span>
+                    <span className="block text-white/90 text-sm mb-1">{t.emergencySituations}</span>
+                    <span className="font-medium">{t.within2_4Hours}</span>
                   </div>
                   <motion.div
                     initial={{ width: 0 }}
@@ -89,8 +93,8 @@ export function Emergency() {
                 
                 <div className="flex justify-between items-center pb-3 border-b border-white/20">
                   <div>
-                    <span className="block text-white/90 text-sm mb-1">Reguliere inspecties</span>
-                    <span className="font-medium">Binnen 1-2 dagen</span>
+                    <span className="block text-white/90 text-sm mb-1">{t.regularInspections}</span>
+                    <span className="font-medium">{t.within1_2Days}</span>
                   </div>
                   <motion.div
                     initial={{ width: 0 }}
@@ -111,8 +115,8 @@ export function Emergency() {
                 
                 <div className="flex justify-between items-center">
                   <div>
-                    <span className="block text-white/90 text-sm mb-1">Offertes</span>
-                    <span className="font-medium">Binnen 24 uur</span>
+                    <span className="block text-white/90 text-sm mb-1">{t.quotes}</span>
+                    <span className="font-medium">{t.within24Hours}</span>
                   </div>
                   <motion.div
                     initial={{ width: 0 }}

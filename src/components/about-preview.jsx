@@ -4,8 +4,12 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronRight, User, Hammer, Star } from 'lucide-react';
+import { useLanguage, translations } from '@/lib/language-context';
 
 export function AboutPreview() {
+  const { language } = useLanguage();
+  const t = translations[language];
+  
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -28,11 +32,11 @@ export function AboutPreview() {
               />
             </div>
             
-            <div className="absolute -bottom-8 -right-8 w-32 h-32 z-20">
+            <div className=" -bottom-8 -right-8 w-32 h-32 z-20">
               <div className="relative bg-white p-4 rounded-lg shadow-lg flex items-center justify-center">
                 <div className="text-center">
                   <p className="text-4xl font-bold text-primary">10+</p>
-                  <p className="text-sm text-gray-600 font-medium">Jaar ervaring</p>
+                  <p className="text-sm text-gray-600 font-medium">{t.yearsExperienceText}</p>
                 </div>
               </div>
             </div>
@@ -46,15 +50,15 @@ export function AboutPreview() {
           >
             <div className="flex items-center space-x-2 mb-4">
               <div className="h-1 w-10 bg-primary"></div>
-              <p className="text-primary font-medium uppercase tracking-wider text-sm">Over ons</p>
+              <p className="text-primary font-medium uppercase tracking-wider text-sm">{t.aboutUsSection}</p>
             </div>
             
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Eigenaar & Dakexpert Daniel Gábor
+              {t.ownerTitle}
             </h2>
             
             <p className="text-gray-600 mb-6 text-lg">
-              Met passie voor het vak en meer dan een decennium aan ervaring, heeft Daniel Gábor zich gespecialiseerd in hoogwaardige dakrenovaties en -reparaties. Samen met zijn team staat hij garant voor kwaliteit en betrouwbaarheid.
+              {t.aboutDescription}
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -63,8 +67,8 @@ export function AboutPreview() {
                   <User className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900">Persoonlijke aanpak</h3>
-                  <p className="text-gray-600 text-sm">Altijd direct contact met de eigenaar</p>
+                  <h3 className="font-bold text-gray-900">{t.personalApproach}</h3>
+                  <p className="text-gray-600 text-sm">{t.directContact}</p>
                 </div>
               </div>
               
@@ -73,8 +77,8 @@ export function AboutPreview() {
                   <Hammer className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900">Vakmanschap</h3>
-                  <p className="text-gray-600 text-sm">Uitsluitend met kwaliteitsmaterialen</p>
+                  <h3 className="font-bold text-gray-900">{t.craftsmanship}</h3>
+                  <p className="text-gray-600 text-sm">{t.qualityMaterials}</p>
                 </div>
               </div>
               
@@ -83,8 +87,8 @@ export function AboutPreview() {
                   <Star className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900">Klanttevredenheid</h3>
-                  <p className="text-gray-600 text-sm">Meer dan 450 succesvolle projecten</p>
+                  <h3 className="font-bold text-gray-900">{t.customerSatisfaction}</h3>
+                  <p className="text-gray-600 text-sm">{t.successfulProjects}</p>
                 </div>
               </div>
             </div>
@@ -93,7 +97,7 @@ export function AboutPreview() {
               href="/over-ons"
               className="inline-flex items-center text-primary font-medium hover:text-primary-hover transition-colors group"
             >
-              Meer over ons
+              {t.moreAboutUs}
               <ChevronRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>

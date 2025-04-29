@@ -20,46 +20,46 @@ export default function AboutPage() {
   const values = [
     {
       icon: <Shield className="h-8 w-8 text-primary" />,
-      title: "Kwaliteit",
-      description: "Wij gebruiken alleen hoogwaardige materialen en werken met de nieuwste technieken."
+      title: t.quality,
+      description: t.qualityDescription
     },
     {
       icon: <CheckCircle className="h-8 w-8 text-primary" />,
-      title: "Betrouwbaarheid",
-      description: "We komen onze afspraken na en staan altijd klaar voor onze klanten."
+      title: t.reliability,
+      description: t.reliabilityDescription
     },
     {
       icon: <Users className="h-8 w-8 text-primary" />,
-      title: "Klantgericht",
-      description: "Uw wensen staan centraal in ons werk, met persoonlijke aandacht en maatwerk."
+      title: t.clientFocused,
+      description: t.clientFocusedDescription
     }
   ];
 
   const milestones = [
     {
-      year: "2013",
-      title: "Oprichting Daniel Dakrenovatie",
-      description: "Start van het bedrijf door Daniel Gábor met een focus op kwaliteit en service."
+      year: t.foundingYear,
+      title: t.foundingTitle,
+      description: t.foundingDescription
     },
     {
-      year: "2016",
-      title: "100e project afgerond",
-      description: "Een belangrijke mijlpaal in de groei van ons bedrijf."
+      year: t.milestone100,
+      title: t.milestone100Title,
+      description: t.milestone100Description
     },
     {
-      year: "2018",
-      title: "Uitbreiding team",
-      description: "Versterking van het team met ervaren dakdekkers om aan de groeiende vraag te voldoen."
+      year: t.teamExpansion,
+      title: t.teamExpansionTitle,
+      description: t.teamExpansionDescription
     },
     {
-      year: "2020",
-      title: "Uitbreiding diensten",
-      description: "Toevoeging van specialistische diensten zoals zink- en loodwerk."
+      year: t.servicesExpansion,
+      title: t.servicesExpansionTitle,
+      description: t.servicesExpansionDescription
     },
     {
-      year: "2023",
-      title: "450+ succesvolle projecten",
-      description: "Een nieuwe mijlpaal bereikt met honderden tevreden klanten door heel Nederland."
+      year: t.milestone450,
+      title: t.milestone450Title,
+      description: t.milestone450Description
     }
   ];
   
@@ -67,7 +67,7 @@ export default function AboutPage() {
     <>
       <PageHero 
         title={t.aboutUs} 
-        subtitle="Al meer dan 10 jaar uw betrouwbare partner voor dakrenovaties en reparaties"
+        subtitle={t.aboutPageSubtitle}
       />
 
       <section className="py-20 bg-white">
@@ -90,12 +90,12 @@ export default function AboutPage() {
                 />
               </div>
               
-              <div className="absolute -bottom-8 -right-8 bg-white p-4 rounded-lg shadow-lg z-20">
+              <div className="absolute -bottom-8 -right-2 bg-white p-4 rounded-lg shadow-lg z-20">
                 <div className="flex items-center gap-3">
                   <Award className="h-8 w-8 text-primary" />
                   <div>
                     <p className="font-bold text-gray-900">Daniel Gábor</p>
-                    <p className="text-gray-600 text-sm">Eigenaar & Dakexpert</p>
+                    <p className="text-gray-600 text-sm">{t.ownerInfo}</p>
                   </div>
                 </div>
               </div>
@@ -108,39 +108,39 @@ export default function AboutPage() {
             >
               <div className="flex items-center space-x-2 mb-4">
                 <div className="h-1 w-10 bg-primary"></div>
-                <p className="text-primary font-medium uppercase tracking-wider text-sm">Ons verhaal</p>
+                <p className="text-primary font-medium uppercase tracking-wider text-sm">{t.ourStory}</p>
               </div>
               
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Passie voor vakmanschap en kwaliteit
+                {t.passionForCraftsmanship}
               </h2>
               
               <div className="space-y-6 text-gray-600">
                 <p>
-                  Daniel Dakrenovatie werd in 2013 opgericht door Daniel Gábor, een expert met jarenlange ervaring in de dakdekkersbranche. Wat begon als een eenmanszaak, is uitgegroeid tot een gerenommeerd dakdekkersbedrijf met een team van ervaren vakmensen.
+                  {t.companyHistory1}
                 </p>
                 <p>
-                  Met meer dan 10 jaar ervaring en 450 succesvolle projecten, staan wij bekend om onze kwaliteit, betrouwbaarheid en persoonlijke aanpak. Wij specialiseren ons in alle soorten dakrenovaties, reparaties en onderhoud.
+                  {t.companyHistory2}
                 </p>
                 <p>
-                  Onze missie is om elke klant een waterdicht, duurzaam en mooi dak te bezorgen dat jarenlang meegaat. Dit doen we door gebruik te maken van hoogwaardige materialen en de nieuwste technieken in de branche.
+                  {t.companyHistory3}
                 </p>
               </div>
               
               <div className="mt-8 flex items-center gap-6">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-primary">10+</div>
-                  <p className="text-gray-600 text-sm">Jaar ervaring</p>
+                  <p className="text-gray-600 text-sm">{t.yearsText}</p>
                 </div>
                 <div className="h-12 w-px bg-gray-200"></div>
                 <div className="text-center">
                   <div className="text-4xl font-bold text-primary">450+</div>
-                  <p className="text-gray-600 text-sm">Projecten</p>
+                  <p className="text-gray-600 text-sm">{t.projectsText}</p>
                 </div>
                 <div className="h-12 w-px bg-gray-200"></div>
                 <div className="text-center">
                   <div className="text-4xl font-bold text-primary">100%</div>
-                  <p className="text-gray-600 text-sm">Klanttevredenheid</p>
+                  <p className="text-gray-600 text-sm">{t.satisfaction}</p>
                 </div>
               </div>
             </motion.div>
@@ -156,9 +156,9 @@ export default function AboutPage() {
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Onze kernwaarden</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">{t.ourValues}</h2>
             <p className="text-gray-600 text-lg">
-              De principes die ten grondslag liggen aan alles wat we doen
+              {t.valuesPrinciples}
             </p>
           </motion.div>
           
@@ -194,22 +194,22 @@ export default function AboutPage() {
               <div className="sticky top-32">
                 <div className="flex items-center space-x-2 mb-4">
                   <div className="h-1 w-10 bg-primary"></div>
-                  <p className="text-primary font-medium uppercase tracking-wider text-sm">Onze geschiedenis</p>
+                  <p className="text-primary font-medium uppercase tracking-wider text-sm">{t.ourHistory}</p>
                 </div>
                 
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Een decennium van groei en succes
+                  {t.decadeOfGrowth}
                 </h2>
                 
                 <p className="text-gray-600 mb-8">
-                  Bekijk de belangrijkste mijlpalen in de ontwikkeling van Daniel Dakrenovatie door de jaren heen.
+                  {t.milestoneDescription}
                 </p>
                 
                 <Link 
                   href="/contact"
                   className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-md hover:bg-primary-hover transition-colors"
                 >
-                  Neem contact met ons op
+                  {t.contactUs}
                 </Link>
               </div>
             </motion.div>
@@ -256,16 +256,16 @@ export default function AboutPage() {
               transition={{ duration: 0.5 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Klaar voor uw dakproject?
+                {t.readyForProject}
               </h2>
               <p className="text-xl text-white/80 mb-8">
-                Neem vandaag nog contact met ons op voor een gratis inspectie en offerte
+                {t.contactForInspection}
               </p>
               <Link 
                 href="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-md hover:bg-gray-100 transition-colors font-medium"
               >
-                Vraag een offerte aan
+                {t.requestQuoteCta}
               </Link>
             </motion.div>
           </div>

@@ -16,6 +16,7 @@ import { useLanguage, translations } from '@/lib/language-context';
 export default function ContactPage() {
   const { language } = useLanguage();
   const t = translations[language];
+  
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -49,7 +50,9 @@ export default function ContactPage() {
     <>
       <PageHero 
         title={t.contact} 
-        subtitle="Heeft u vragen of wilt u een offerte aanvragen? Wij helpen u graag verder."
+        subtitle={language === 'nl' ? 
+          "Heeft u vragen of wilt u een offerte aanvragen? Wij helpen u graag verder." : 
+          "Do you have questions or would you like to request a quote? We are happy to help you."}
       />
 
       <section className="py-20 bg-white">
@@ -61,7 +64,7 @@ export default function ContactPage() {
               transition={{ duration: 0.5 }}
             >
               <div className="bg-gray-50 p-8 rounded-lg border border-gray-100 h-full">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Contactgegevens</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.contactDetails}</h2>
                 
                 <div className="space-y-6">
                   <div className="flex items-start">
@@ -69,8 +72,8 @@ export default function ContactPage() {
                       <Phone className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900">Telefoon</h3>
-                      <p className="text-gray-600 mb-1">Bereikbaar op werkdagen van 07:00 tot 20:00</p>
+                      <h3 className="font-bold text-gray-900">{t.phoneHeader}</h3>
+                      <p className="text-gray-600 mb-1">{t.phoneAvailability}</p>
                       <a 
                         href="tel:+31657824194" 
                         className="text-primary font-medium hover:underline"
@@ -85,8 +88,8 @@ export default function ContactPage() {
                       <MessageCircle className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900">WhatsApp</h3>
-                      <p className="text-gray-600 mb-1">Snelle reactie via chat</p>
+                      <h3 className="font-bold text-gray-900">{t.whatsApp}</h3>
+                      <p className="text-gray-600 mb-1">{t.quickResponse}</p>
                       <a 
                         href="https://wa.me/31657824194" 
                         target="_blank"
@@ -102,8 +105,8 @@ export default function ContactPage() {
                       <Mail className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900">E-mail</h3>
-                      <p className="text-gray-600 mb-1">Reactie binnen 24 uur</p>
+                      <h3 className="font-bold text-gray-900">{t.emailHeader}</h3>
+                      <p className="text-gray-600 mb-1">{t.responseTime}</p>
                       <a 
                         href="mailto:info@danieldakrenovatie.nl" 
                         className="text-primary font-medium hover:underline"
@@ -118,24 +121,24 @@ export default function ContactPage() {
                       <MapPin className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900">Werkgebied</h3>
-                      <p className="text-gray-600 mb-1">Wij komen in heel Nederland</p>
+                      <h3 className="font-bold text-gray-900">{t.workArea}</h3>
+                      <p className="text-gray-600 mb-1">{t.workAreaDesc}</p>
                       <p className="text-primary font-medium">KvK: 96760923</p>
                     </div>
                   </div>
                 </div>
                 
                 <div className="mt-10 bg-white p-6 rounded-lg border border-gray-100">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Spoedgevallen</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{t.emergencies}</h3>
                   <p className="text-gray-600 mb-4">
-                    Heeft u een daklekkage of stormschade? Bel ons direct voor snelle hulp.
+                    {t.emergencyDesc}
                   </p>
                   <Link 
                     href="tel:+31657824194"
                     className="inline-flex items-center justify-center w-full bg-red-600 text-white py-3 px-4 rounded-md font-medium hover:bg-red-700 transition-colors"
                   >
                     <Phone size={18} className="mr-2" />
-                    Bel direct voor noodhulp
+                    {t.callEmergency}
                   </Link>
                 </div>
               </div>
@@ -152,9 +155,9 @@ export default function ContactPage() {
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
                       <Check className="h-8 w-8 text-green-600" />
                     </div>
-                    <h2 className="text-2xl font-bold text-gray-900">Bedankt voor uw bericht!</h2>
+                    <h2 className="text-2xl font-bold text-gray-900">{t.thankYouTitle}</h2>
                     <p className="text-gray-600 mt-2">
-                      We hebben uw aanvraag ontvangen en nemen binnen 24 uur contact met u op.
+                      {t.thankYouMessage}
                     </p>
                   </div>
                   
@@ -162,18 +165,18 @@ export default function ContactPage() {
                     onClick={() => setFormState(prev => ({ ...prev, submitted: false }))}
                     className="w-full bg-primary text-white py-3 px-4 rounded-md font-medium hover:bg-primary-hover transition-colors"
                   >
-                    Nieuw bericht versturen
+                    {t.newMessage}
                   </button>
                 </div>
               ) : (
                 <div className="bg-white p-8 rounded-lg border border-gray-100 shadow-md">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Stuur ons een bericht</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.sendMessage}</h2>
                   
                   <form onSubmit={handleSubmit}>
                     <div className="space-y-4">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                          Naam *
+                          {t.nameLabel}
                         </label>
                         <input
                           type="text"
@@ -183,14 +186,14 @@ export default function ContactPage() {
                           onChange={handleChange}
                           required
                           className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                          placeholder="Uw naam"
+                          placeholder={t.namePlaceholder}
                         />
                       </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                            E-mail *
+                            {t.emailLabel}
                           </label>
                           <input
                             type="email"
@@ -200,13 +203,13 @@ export default function ContactPage() {
                             onChange={handleChange}
                             required
                             className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                            placeholder="uw@email.nl"
+                            placeholder={t.emailPlaceholder}
                           />
                         </div>
                         
                         <div>
                           <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                            Telefoonnummer
+                            {t.phoneLabel}
                           </label>
                           <input
                             type="tel"
@@ -215,14 +218,14 @@ export default function ContactPage() {
                             value={formState.phone}
                             onChange={handleChange}
                             className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                            placeholder="+31 6 57824194"
+                            placeholder={t.phonePlaceholder}
                           />
                         </div>
                       </div>
                       
                       <div>
                         <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
-                          Dienst
+                          {t.serviceLabel}
                         </label>
                         <select
                           id="service"
@@ -231,21 +234,21 @@ export default function ContactPage() {
                           onChange={handleChange}
                           className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         >
-                          <option value="">Selecteer een dienst</option>
-                          <option value="bitumen">Bitumen dak</option>
-                          <option value="pvc">PVC dak</option>
-                          <option value="pannen">Pannendak</option>
-                          <option value="zink">Zink- en loodwerk</option>
-                          <option value="lekkage">Daklekkage</option>
-                          <option value="reparatie">Dakreparatie</option>
-                          <option value="inspectie">Dakinspectie</option>
-                          <option value="anders">Anders</option>
+                          <option value="">{t.selectService}</option>
+                          <option value="bitumen">{t.roofService.bitumen}</option>
+                          <option value="pvc">{t.roofService.pvc}</option>
+                          <option value="pannen">{t.roofService.pannen}</option>
+                          <option value="zink">{t.roofService.zink}</option>
+                          <option value="lekkage">{t.roofService.lekkage}</option>
+                          <option value="reparatie">{t.roofService.reparatie}</option>
+                          <option value="inspectie">{t.roofService.inspectie}</option>
+                          <option value="anders">{t.roofService.other}</option>
                         </select>
                       </div>
                       
                       <div>
                         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                          Bericht *
+                          {t.messageLabel}
                         </label>
                         <textarea
                           id="message"
@@ -255,7 +258,7 @@ export default function ContactPage() {
                           required
                           rows={5}
                           className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                          placeholder="Vertel ons over uw project of vraag..."
+                          placeholder={t.messagePlaceholder}
                         />
                       </div>
                       
@@ -264,14 +267,14 @@ export default function ContactPage() {
                           type="submit"
                           className="w-full bg-primary text-white py-4 px-6 rounded-md font-medium hover:bg-primary-hover transition-colors"
                         >
-                          Verstuur bericht
+                          {t.submitButton}
                         </button>
                       </div>
                       
                       <p className="text-sm text-gray-500 mt-4">
-                        Door dit formulier te versturen gaat u akkoord met onze{' '}
+                        {t.privacyText}{' '}
                         <Link href="/privacy" className="text-primary hover:underline">
-                          privacybeleid
+                          {t.privacyPolicy}
                         </Link>
                         .
                       </p>

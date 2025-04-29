@@ -89,9 +89,9 @@ export function Testimonials() {
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
-          <div className="absolute -top-12 -left-8 md:-left-16 opacity-20">
+          {/* <div className="absolute -top-12 -left-8 md:-left-16 opacity-20">
             <Quote size={100} className="text-white" />
-          </div>
+          </div> */}
 
           <div className="relative z-10">
             <motion.div
@@ -160,9 +160,9 @@ export function Testimonials() {
             </motion.div>
           </div>
           
-          <div className="absolute -bottom-12 -right-8 md:-right-16 opacity-20 rotate-180">
+          {/* <div className="absolute -bottom-12 -right-8 md:-right-16 opacity-20 rotate-180">
             <Quote size={100} className="text-white" />
-          </div>
+          </div> */}
         </div>
         
         <motion.div

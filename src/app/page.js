@@ -18,7 +18,7 @@ export default function Home() {
       <Services />
       <AboutPreview />
       {/* <FeaturedProjects /> */}
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Emergency />
       <Coverage />
       <CTA />

@@ -11,30 +11,55 @@ export function Services() {
   const { language } = useLanguage();
   const t = translations[language];
 
-  // For a production site, these service titles and descriptions should be added to the translations dictionary
-  // to fully support multilingual content. For now, they remain in Dutch only.
-  const services = [
-    {
-      title: 'Bitumen dak',
-      description: 'Duurzame oplossingen voor platte daken met bitumen dakbedekking.',
-      link: '/diensten/bitumen-dak'
-    },
-    {
-      title: 'PVC dak',
-      description: 'Moderne PVC dakbedekking met uitstekende waterdichtheid en levensduur.',
-      link: '/diensten/pvc-dak'
-    },
-    {
-      title: 'Pannendak',
-      description: 'Renovatie en onderhoud van traditionele en moderne pannendaken.',
-      link: '/diensten/pannendak'
-    },
-    {
-      title: 'Zink- en loodwerk',
-      description: 'Specialistisch zink- en loodwerk voor dakgoten en schoorstenen.',
-      link: '/diensten/zink-loodwerk'
-    }
-  ];
+  // Service translations
+  const serviceTranslations = {
+    nl: [
+      {
+        title: 'Bitumen dak',
+        description: 'Duurzame oplossingen voor platte daken met bitumen dakbedekking.',
+        link: '/diensten/bitumen-dak'
+      },
+      {
+        title: 'PVC dak',
+        description: 'Moderne PVC dakbedekking met uitstekende waterdichtheid en levensduur.',
+        link: '/diensten/pvc-dak'
+      },
+      {
+        title: 'Pannendak',
+        description: 'Renovatie en onderhoud van traditionele en moderne pannendaken.',
+        link: '/diensten/pannendak'
+      },
+      {
+        title: 'Zink- en loodwerk',
+        description: 'Specialistisch zink- en loodwerk voor dakgoten en schoorstenen.',
+        link: '/diensten/zink-loodwerk'
+      }
+    ],
+    en: [
+      {
+        title: 'Bitumen roof',
+        description: 'Sustainable solutions for flat roofs with bitumen roofing.',
+        link: '/diensten/bitumen-dak'
+      },
+      {
+        title: 'PVC roof',
+        description: 'Modern PVC roofing with excellent water resistance and lifespan.',
+        link: '/diensten/pvc-dak'
+      },
+      {
+        title: 'Tile roof',
+        description: 'Renovation and maintenance of traditional and modern tile roofs.',
+        link: '/diensten/pannendak'
+      },
+      {
+        title: 'Zinc and lead work',
+        description: 'Specialized zinc and lead work for gutters and chimneys.',
+        link: '/diensten/zink-loodwerk'
+      }
+    ]
+  };
+
+  const services = serviceTranslations[language];
 
   const container = {
     hidden: { opacity: 0 },

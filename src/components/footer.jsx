@@ -4,26 +4,29 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, Mail, MapPin, Facebook, Instagram, ArrowUp, MessageCircle } from 'lucide-react';
+import { useLanguage, translations } from '@/lib/language-context';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { language, changeLanguage } = useLanguage();
+  const t = translations[language];
   
   const mainServices = [
-    { name: 'Bitumen dak', href: '/diensten/bitumen-dak' },
-    { name: 'PVC dak', href: '/diensten/pvc-dak' },
-    { name: 'Pannendak', href: '/diensten/pannendak' },
-    { name: 'Zink- en loodwerk', href: '/diensten/zink-loodwerk' },
-    { name: 'Dakreparatie', href: '/diensten/dakreparatie' },
-    { name: 'Daklekkage', href: '/diensten/daklekkage' }
+    { name: t.roofService.bitumen, href: '/diensten/bitumen-dak' },
+    { name: t.roofService.pvc, href: '/diensten/pvc-dak' },
+    { name: t.roofService.pannen, href: '/diensten/pannendak' },
+    { name: t.roofService.zink, href: '/diensten/zink-loodwerk' },
+    { name: t.roofService.lekkage, href: '/diensten/daklekkage' },
+    { name: t.roofService.reparatie, href: '/diensten/dakreparatie' }
   ];
   
   const otherServices = [
-    { name: 'Dakinspectie', href: '/diensten/dakinspectie' },
-    { name: 'Dakonderhoud', href: '/diensten/dakonderhoud' },
-    { name: 'Vogelwering', href: '/diensten/vogelwering' },
-    { name: 'Nokvorsten vervangen', href: '/diensten/nokvorsten' },
-    { name: 'Dakreiniging', href: '/diensten/dakreiniging' },
-    { name: 'Dakisolatie', href: '/diensten/dakisolatie' }
+    { name: t.roofService.inspectie, href: '/diensten/dakinspectie' },
+    { name: t.roofService.onderhoud, href: '/diensten/dakonderhoud' },
+    { name: t.roofService.vogels, href: '/diensten/vogelwering' },
+    { name: t.roofService.nokvorsten, href: '/diensten/nokvorsten' },
+    { name: t.roofService.reiniging, href: '/diensten/dakreiniging' },
+    { name: t.roofService.isolatie, href: '/diensten/dakisolatie' }
   ];
   
   const scrollToTop = () => {
@@ -31,6 +34,10 @@ export function Footer() {
       top: 0,
       behavior: 'smooth'
     });
+  };
+
+  const toggleLanguage = () => {
+    changeLanguage(language === 'nl' ? 'en' : 'nl');
   };
   
   return (
@@ -41,7 +48,7 @@ export function Footer() {
             <div>
               <Link href="/" className="inline-block mb-6">
                 <Image
-                  src="/logo.png" 
+                  src="/danielgaborlogo.png"
                   alt="Daniel Gábor Dakrenovatie"
                   width={180}
                   height={60}
@@ -49,20 +56,14 @@ export function Footer() {
                 />
               </Link>
               <p className="text-gray-400 mb-6">
-                Uw betrouwbare dakdekker met meer dan 10 jaar ervaring en 450 succesvolle projecten in heel Nederland.
+                {language === 'nl' 
+                  ? 'Uw betrouwbare dakdekker met meer dan 10 jaar ervaring en 450 succesvolle projecten in heel Nederland.'
+                  : 'Your reliable roofer with over 10 years of experience and 450 successful projects throughout the Netherlands.'}
               </p>
-              <div className="flex space-x-4">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-2 rounded-full hover:bg-primary transition-colors">
-                  <Facebook size={20} />
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-2 rounded-full hover:bg-primary transition-colors">
-                  <Instagram size={20} />
-                </a>
-              </div>
             </div>
             
             <div>
-              <h3 className="text-lg font-bold mb-6 text-white">Diensten</h3>
+              <h3 className="text-lg font-bold mb-6 text-white">{language === 'nl' ? 'Diensten' : 'Services'}</h3>
               <ul className="space-y-3">
                 {mainServices.map((service) => (
                   <li key={service.name}>
@@ -75,7 +76,7 @@ export function Footer() {
             </div>
             
             <div>
-              <h3 className="text-lg font-bold mb-6 text-white">Meer diensten</h3>
+              <h3 className="text-lg font-bold mb-6 text-white">{language === 'nl' ? 'Meer diensten' : 'More services'}</h3>
               <ul className="space-y-3">
                 {otherServices.map((service) => (
                   <li key={service.name}>
@@ -88,12 +89,12 @@ export function Footer() {
             </div>
             
             <div>
-              <h3 className="text-lg font-bold mb-6 text-white">Contact</h3>
+              <h3 className="text-lg font-bold mb-6 text-white">{t.contact}</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <Phone size={20} className="text-primary mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-white font-medium">Telefoon</p>
+                    <p className="text-white font-medium">{t.phoneHeader}</p>
                     <a href="tel:+31657824194" className="text-gray-400 hover:text-white transition-colors">
                       +31 6 57824194
                     </a>
@@ -102,7 +103,7 @@ export function Footer() {
                 <li className="flex items-start">
                   <MessageCircle size={20} className="text-primary mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-white font-medium">WhatsApp</p>
+                    <p className="text-white font-medium">{t.whatsApp}</p>
                     <a 
                       href="https://wa.me/31657824194" 
                       target="_blank" 
@@ -115,7 +116,7 @@ export function Footer() {
                 <li className="flex items-start">
                   <Mail size={20} className="text-primary mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-white font-medium">E-mail</p>
+                    <p className="text-white font-medium">{t.emailHeader}</p>
                     <a href="mailto:info@danieldakrenovatie.nl" className="text-gray-400 hover:text-white transition-colors">
                       info@danieldakrenovatie.nl
                     </a>
@@ -124,8 +125,8 @@ export function Footer() {
                 <li className="flex items-start">
                   <MapPin size={20} className="text-primary mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-white font-medium">Werkgebied</p>
-                    <p className="text-gray-400">Heel Nederland</p>
+                    <p className="text-white font-medium">{t.workArea}</p>
+                    <p className="text-gray-400">{t.coverageNL}</p>
                   </div>
                 </li>
               </ul>
@@ -136,28 +137,31 @@ export function Footer() {
         <div className="py-8 flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0">
             <div className="text-gray-500 text-sm">
-              &copy; {currentYear} Daniel Gábor Dakrenovatie. Alle rechten voorbehouden.
+              &copy; {currentYear} Daniel Gábor Dakrenovatie. {t.allRightsReserved}
             </div>
             <div className="hidden md:block h-4 w-px bg-gray-800"></div>
             <div className="flex gap-4 text-gray-500 text-sm">
               <Link href="/privacy" className="hover:text-gray-300 transition-colors">
-                Privacybeleid
+                {t.privacyPolicyPage}
               </Link>
               <Link href="/algemene-voorwaarden" className="hover:text-gray-300 transition-colors">
-                Algemene voorwaarden
+                {t.termsAndConditions}
               </Link>
               <Link href="/sitemap" className="hover:text-gray-300 transition-colors">
-                Sitemap
+                {t.sitemap}
               </Link>
             </div>
           </div>
           
           <div className="flex items-center gap-4">
-            <div className="flex gap-2 items-center">
-              <span className="text-gray-500 text-sm mr-1">NL</span>
-              <span className="text-gray-700">/</span>
-              <span className="text-gray-500 text-sm">EN</span>
-            </div>
+            <button 
+              onClick={toggleLanguage}
+              className="flex items-center text-sm font-medium hover:opacity-70 transition-opacity"
+            >
+              <span className={`transition-all ${language === 'nl' ? 'font-bold text-primary' : 'text-gray-500'}`}>NL</span>
+              <span className="mx-1 text-gray-700">/</span>
+              <span className={`transition-all ${language === 'en' ? 'font-bold text-primary' : 'text-gray-500'}`}>EN</span>
+            </button>
             <button 
               onClick={scrollToTop}
               className="bg-gray-800 p-2 rounded-full hover:bg-primary transition-colors"

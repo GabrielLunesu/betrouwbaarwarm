@@ -12,6 +12,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Hide debug overlays - this fixes the issue with the absolute div showing on mobile */
+[class*="translate-x"][class*="translate-y"] {
+  overflow: hidden !important;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
@@ -114,4 +119,9 @@ p {
 /* Button hover effect */
 .btn-hover {
   @apply transition-all duration-300 hover:scale-105 active:scale-95;
+}
+
+/* Add this class to prevent body scrolling */
+.body-no-scroll {
+  overflow: hidden;
 }
