@@ -24,7 +24,8 @@ export default function ContactPage() {
     message: '',
     service: '',
     submitted: false,
-    error: false
+    error: false,
+    loading: false
   });
 
   const handleChange = (e) => {
@@ -35,15 +36,61 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would normally send the form data to your backend
     
-    // For demo purposes, we'll just set the state
+    // Set loading state
     setFormState(prev => ({
       ...prev,
-      submitted: true
+      loading: true,
+      error: false
     }));
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          phone: formState.phone,
+          message: formState.message,
+          service: formState.service,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Success - reset form and show success message
+        setFormState({
+          name: '',
+          email: '',
+          phone: '',
+          message: '',
+          service: '',
+          submitted: true,
+          error: false,
+          loading: false
+        });
+      } else {
+        // Error from server
+        setFormState(prev => ({
+          ...prev,
+          error: data.error || 'Something went wrong. Please try again.',
+          loading: false
+        }));
+      }
+    } catch (error) {
+      // Network error or other error
+      setFormState(prev => ({
+        ...prev,
+        error: 'Unable to send message. Please check your internet connection and try again.',
+        loading: false
+      }));
+    }
   };
 
   return (
@@ -172,6 +219,12 @@ export default function ContactPage() {
                 <div className="bg-white p-8 rounded-lg border border-gray-100 shadow-md">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.sendMessage}</h2>
                   
+                  {formState.error && (
+                    <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                      <p className="text-red-700 text-sm">{formState.error}</p>
+                    </div>
+                  )}
+                  
                   <form onSubmit={handleSubmit}>
                     <div className="space-y-4">
                       <div>
@@ -265,9 +318,24 @@ export default function ContactPage() {
                       <div className="pt-2">
                         <button
                           type="submit"
-                          className="w-full bg-primary text-white py-4 px-6 rounded-md font-medium hover:bg-primary-hover transition-colors"
+                          disabled={formState.loading}
+                          className={`w-full py-4 px-6 rounded-md font-medium transition-colors ${
+                            formState.loading
+                              ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                              : 'bg-primary text-white hover:bg-primary-hover'
+                          }`}
                         >
-                          {t.submitButton}
+                          {formState.loading ? (
+                            <div className="flex items-center justify-center">
+                              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                              </svg>
+                              {language === 'nl' ? 'Verzenden...' : 'Sending...'}
+                            </div>
+                          ) : (
+                            t.submitButton
+                          )}
                         </button>
                       </div>
                       

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://danieldakrenovatie.nl
+
+# Sitemaps
+Sitemap: https://danieldakrenovatie.nl/sitemap.xml
